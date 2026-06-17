@@ -505,9 +505,8 @@ CONTACT
 
     border-radius:15px;
 
-    background:
-    rgba(255,255,255,.08);
-
+    background: rgba(255,255,255,.12);
+border: 1px solid rgba(255,255,255,.15);
     color:white;
 }
 
@@ -640,54 +639,63 @@ MOBILE
 
 @media(max-width:768px){
 
-.hero-content h1{
-    font-size:2.5rem;
+header{
+    padding:12px;
 }
 
-.section-title{
-    font-size:2rem;
+.navbar{
+    padding:15px;
 }
 
-/* Skills */
-
-    .skill-icons{
-        display:grid;
-        grid-template-columns:repeat(2,1fr);
-        gap:15px;
-    }
-
-    .skill-item{
-        min-height:90px;
-        padding:15px 10px;
-    }
+.logo{
+    font-size:1.5rem;
+}
 
 
-    .skill-item i{
-        font-size:2rem;
-    }
+section{
+    padding:80px 20px;
+}
 
-    .skill-item span{
-        font-size:.75rem;
-        line-height:1.5;
-    }
-    
-    .skill-item p{
-        font-size:0.8rem;
-    }
+.profile-img{
+    width:170px;
+    height:170px;
+}
 
-/* Card */
-.glass-card{
+.skill-icons{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.skills-grid{
+    grid-template-columns:1fr;
+}
+
+.project-grid{
+    grid-template-columns:1fr;
+}
+
+.skill-item span{
+    display:block;
+    font-size:.8rem;
+    margin-top:8px;
+    overflow-wrap:break-word;
+    word-break:break-word;
+}
+
+.card{
     padding:20px;
 }
 
-/* Navbar */
-.nav-links{
-    width:100%;
+img,
+video,
+iframe{
+    max-width:100%;
 }
 
-/* Hilangkan overflow horizontal */
-body{
-    overflow-x:hidden;
+.skills-grid,
+.skill-icons,
+.card,
+.skill{
+    min-width:0;
 }
 
 }
