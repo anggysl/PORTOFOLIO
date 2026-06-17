@@ -34,6 +34,7 @@ html{
 body{
     color:white;
     overflow-x:hidden;
+    width:100%;
 
     background:
     radial-gradient(circle at 15% 15%, #4630D9 0%, transparent 30%),
@@ -349,7 +350,9 @@ SKILLS
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:10px;
+    justify-content:center;
+    text-align:center;
+    min-height:120px;
 }
 
 .skill-item i{
@@ -368,16 +371,18 @@ SKILLS
 }
 
 .skill-item span{
-    font-size:.95rem;
-    font-weight:500;
+    display:block;
+    font-size:.8rem;
+    line-height:1.4;
+    margin-top:8px;
+    word-break:normal;
 }
 
 .skills-grid{
     display:grid;
     grid-template-columns:
-    repeat(auto-fit,minmax(250px,1fr));
-
-    gap:25px;
+    repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;
 }
 
 .skill h3{
@@ -418,6 +423,7 @@ SKILLS
 
     background:#6863F2;
 }
+
 
 /* =======================
 PROJECTS
@@ -473,14 +479,24 @@ PROJECTS
 /* =======================
 CONTACT
 ======================= */
+#contact .section-title{
+    color:#d9d6ff;
 
+    text-shadow:
+    0 0 8px rgba(104,99,242,.8),
+    0 0 16px rgba(104,99,242,.6);
+}
 .contact-form{
     max-width:700px;
     margin:auto;
 }
-
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+    color: rgba(255,255,255,0.75);
+}
 .contact-form input,
 .contact-form textarea{
+    color:white;
     width:100%;
     padding:18px;
     margin-bottom:15px;
@@ -489,9 +505,8 @@ CONTACT
 
     border-radius:15px;
 
-    background:
-    rgba(255,255,255,.08);
-
+    background: rgba(255,255,255,.12);
+border: 1px solid rgba(255,255,255,.15);
     color:white;
 }
 
@@ -631,6 +646,82 @@ MOBILE
 .section-title{
     font-size:2rem;
 }
+
+/* Skills */
+
+    .skill-icons{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:15px;
+    }
+
+    .skill-item{
+        min-height:90px;
+        padding:15px 10px;
+    }
+
+
+    .skill-item i{
+        font-size:2rem;
+    }
+
+    .skill-item span{
+        font-size:.75rem;
+        line-height:1.5;
+    }
+    
+    .skill-item p{
+        font-size:0.8rem;
+    }
+
+/* Card */
+.glass-card{
+    padding:20px;
+}
+
+/* Navbar */
+.nav-links{
+    width:100%;
+}
+
+/* Hilangkan overflow horizontal */
+body{
+    overflow-x:hidden;
+}
+
+ section{
+        padding:80px 20px;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .project-image{
+        height:180px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+     header{
+        padding:15px;
+    }
+
+    .navbar{
+        padding:14px 18px;
+    }
+
+    .logo{
+        font-size:1.5rem;
+    }
+
+    .menu-btn{
+        font-size:1.7rem;
+    }
+
 
 }
 
@@ -1034,9 +1125,9 @@ navMenu.classList.remove("active");
 /* TYPING ANIMATION */
 const texts = [
     "Frontend Developer",
-    "UI/UX Designer",
-    "Freelancer",
-    "Web Enthusiast"
+    "Fullstack Developer",
+    "Cybersecurity",
+    "AI Engineer",
 ];
 
 let count = 0;
