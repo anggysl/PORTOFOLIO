@@ -6,25 +6,25 @@
 
 <title>Personal Website</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 
 :root{
-    --deep-violet:#150259;
-    --cetacean:#0A0140;
-    --palatinate:#4630D9;
-    --rich-black:#020126;
-    --light-blue:#6863F2;
-    --white:#ffffff;
+    /* Tema Monokrom Premium */
+    --bg-dark: #0a0a0c;          /* Hitam obsidian dalam */
+    --text-main: #ffffff;        /* Putih solid murni */
+    --text-muted: rgba(255, 255, 255, 0.65); /* Putih transparan halus */
+    --glass-bg: rgba(255, 255, 255, 0.04);   /* Kaca transparan tipis */
+    --glass-border: rgba(255, 255, 255, 0.09); /* Garis tepi kaca */
+    --glass-blur: blur(20px);
 }
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; /* Font baru yang lebih sleek & modern */
 }
 
 html{
@@ -32,253 +32,234 @@ html{
 }
 
 body{
-    color:white;
+    color: var(--text-main);
     overflow-x:hidden;
-
-    background:
-    radial-gradient(circle at 15% 15%, #4630D9 0%, transparent 30%),
-    radial-gradient(circle at 85% 85%, #6863F2 0%, transparent 25%),
-    linear-gradient(
-        135deg,
-        #020126 0%,
-        #0A0140 50%,
-        #150259 100%
-    );
+    background-color: var(--bg-dark);
+    
+    /* Gradasi radial latar belakang statis untuk memberi dimensi pada efek kaca */
+    background-image: 
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 35%);
+    background-attachment: fixed;
 }
 
 /* =======================
-HEADER
+HEADER & NAVBAR (Kapsul Pendek Ditengah)
 ======================= */
 
-header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-    padding:20px 6%;
+header {
+    position: fixed;
+    top: 25px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    width: auto; 
+    max-width: 90%; 
+    z-index: 1000;
 }
 
-.navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:18px 30px;
-
-    backdrop-filter:blur(20px);
-
-    background:
-    rgba(255,255,255,.05);
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
-    border-radius:20px;
-
-    box-shadow:
-    0 8px 30px rgba(70,48,217,.25);
+.navbar {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 80px; 
+    padding: 8px 24px; 
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
 
-.logo{
-    font-size:1.8rem;
-    font-weight:700;
-    color:var(--light-blue);
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.menu-btn{
-    font-size:2rem;
-    cursor:pointer;
+.logo-icon {
+    width: 26px; 
+    height: 26px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.8rem;
 }
 
-.overlay{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-
-    background:rgba(0,0,0,.5);
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:.3s;
-
-    z-index:9998;
+.logo {
+    font-size: 1.1rem; 
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
 }
 
-.overlay.active{
-    opacity:1;
-    visibility:visible;
+/* Horizontal Nav Menu */
+.nav-menu-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 4px; 
+    list-style: none;
 }
 
-.nav-menu{
-    position:fixed;
-    top:90px;          /* jarak dari atas */
-    right:-350px;
-
-    width:280px;
-    height:auto;       /* tidak full layar */
-
-    padding:25px;
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:20px;
-
-    box-shadow:
-    0 8px 32px rgba(0,0,0,.3);
-
-    transition:.4s ease;
-
-    z-index:9999;
+.nav-menu-horizontal a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem; 
+    font-weight: 500;
+    padding: 0 10px;
+    height: 32px; 
+    border-radius: 100px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 }
 
-.nav-menu.active{
-    right:20px;
+/* Membungkus Teks Menu */
+.nav-menu-horizontal a span {
+    max-width: 0;
+    opacity: 0;
+    white-space: nowrap;
+    display: inline-block;
+    transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
 }
 
-.nav-menu ul{
-    list-style:none;
-    display:flex;
-    flex-direction:column;
-    gap:20px;
+.nav-menu-horizontal a i {
+    font-size: 0.95rem;
+    min-width: 14px;
+    text-align: center;
 }
 
-.nav-menu li{
-    margin:0;
+/* EFEK KETIKA HOVER ATAU AKTIF (Monokrom Minimalis) */
+.nav-menu-horizontal a:hover,
+.nav-menu-horizontal a.active-nav {
+    background: #ffffff;
+    color: #0a0a0c; /* Teks kontras hitam di dalam pil putih aktif */
+    font-weight: 600;
+    padding: 0 16px; 
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
 }
 
-.nav-menu a{
-    display:flex;
-    align-items:center;
-    gap:15px;
-
-    color:white;
-    text-decoration:none;
-    font-size:1.2rem;
-    font-weight:500;
-
-    padding:12px 20px;
-    border-radius:12px;
-
-    transition:all .3s ease;
+.nav-menu-horizontal a:hover span,
+.nav-menu-horizontal a.active-nav span {
+    max-width: 120px; 
+    opacity: 1;
+    margin-left: 6px; 
+}
+.nav-menu-horizontal a:hover i,
+.nav-menu-horizontal a.active-nav i {
+    transform: scale(1.05);
+    color: inherit;
 }
 
-.nav-menu a i{
-    font-size:1.3rem;
-    color:#6863F2;
-}
-
-.nav-menu a:hover{
-    background:rgba(104,99,242,.15);
-
-    color:#6863F2;
-
-    transform:translateX(10px);
-}
-
-.nav-menu a:hover i{
-    transform:scale(1.2);
-}
-
-.close-btn{
-    position:absolute;
-    top:15px;
-    right:20px;
-    font-size:1.8rem;
-    color:#6863F2;
+.menu-btn {
+    display: none;
 }
 
 /* =======================
-HERO
+HERO (Teks Kiri, Foto Kanan)
 ======================= */
 
-.profile-wrapper{
-    display:flex;
-    justify-content:center;
-    margin-bottom:30px;
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 8% 60px 8%; 
 }
 
-.profile-img{
-    margin-top:150px;    
-    width:220px;
-    height:220px;
-    border-radius:50%;
-    object-fit:cover;
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1100px;
+    width: 100%;
+    text-align: left; 
+}
 
-    border:4px solid #6863F2;
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
 
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.hero-content span {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+/* Pembungkus Foto Profil (Kanan) */
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0; 
+}
+
+.profile-img {
+    margin-top: 0; 
+    width: 280px;  
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+    /* Efek Kaca Frosted Putih */
+    border: 4px solid rgba(255, 255, 255, 0.2);
     box-shadow:
-    0 0 20px rgba(104,99,242,.5),
-    0 0 50px rgba(70,48,217,.4),
-    0 0 80px rgba(21,2,89,.4);
-
-    transition:.4s;
+        0 0 25px rgba(255, 255, 255, 0.1),
+        0 0 60px rgba(255, 255, 255, 0.05),
+        inset 0 0 15px rgba(255, 255, 255, 0.1);
+    transition: .4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.profile-img:hover{
-    transform:scale(1.05);
-}
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:0 20px;
-}
-
-.hero-content{
-    max-width:900px;
-}
-
-.hero-content h1{
-    font-size:3.5rem;
-    margin-bottom:15px;
-}
-
-.hero-content span{
-    color:var(--light-blue);
-}
-
-.hero-content p{
-    font-size:1.1rem;
-    line-height:1.9;
-    opacity:.9;
-    margin-bottom:40px;
-}
-
-.btn{
-    display:inline-block;
-    text-decoration:none;
-    color:white;
-
-    padding:16px 35px;
-
-    border-radius:50px;
-
-    background:
-    linear-gradient(
-        135deg,
-        #4630D9,
-        #6863F2
-    );
-
+.profile-img:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.4);
     box-shadow:
-    0 0 30px rgba(104,99,242,.5);
-
-    transition:.4s;
+        0 0 35px rgba(255, 255, 255, 0.2),
+        0 0 80px rgba(255, 255, 255, 0.1);
 }
 
-.btn:hover{
-    transform:translateY(-5px);
+/* Gaya Tombol Download CV (Glass Style) */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 15px 35px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: .4s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(255, 255, 255, 0.1);
 }
 
 /* =======================
@@ -293,35 +274,31 @@ section{
     text-align:center;
     font-size:3rem;
     margin-bottom:60px;
-    color:var(--light-blue);
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 /* =======================
-CARDS
+CARDS Bertema Monokrom Glass
 ======================= */
 
 .card{
-    background:
-    rgba(255,255,255,.05);
-
-    backdrop-filter:
-    blur(25px);
-
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     border-radius:24px;
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
+    border: 1px solid var(--glass-border);
     padding:35px;
-
-    transition:.4s;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition:.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover{
-    transform:translateY(-10px);
-
-    box-shadow:
-    0 0 40px rgba(104,99,242,.4);
+    transform:translateY(-8px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.03);
 }
 
 /* =======================
@@ -333,6 +310,7 @@ ABOUT
     margin:auto;
     text-align:center;
     line-height:2;
+    color: var(--text-muted);
 }
 
 /* =======================
@@ -340,7 +318,7 @@ SKILLS
 ======================= */
 .skill-icons{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:25px;
     margin-top:20px;
 }
@@ -356,17 +334,14 @@ SKILLS
 
 .skill-item i{
     font-size:3rem;
-    color:#6863F2;
-
+    color: rgba(255, 255, 255, 0.7);
     transition:.3s;
 }
 
 .skill-item i:hover{
     transform:translateY(-5px);
-
-    text-shadow:
-    0 0 15px #6863F2,
-    0 0 30px #6863F2;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
 }
 
 .skill-item span{
@@ -374,55 +349,33 @@ SKILLS
     font-size:.8rem;
     line-height:1.4;
     margin-top:8px;
-    word-break:normal;
+    color: var(--text-muted);
 }
 
 .skills-grid{
     display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(150px,1fr));
-    gap:20px;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
 }
 
 .skill h3{
-    color:var(--light-blue);
-    margin-bottom:10px;
+    color: #ffffff;
+    margin-bottom:20px;
     font-size:1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .skill p{
-    padding:8px 0;
-    border-bottom:1px solid rgba(255,255,255,.08);
+    padding:12px 0;
+    border-bottom:1px solid var(--glass-border);
+    color: var(--text-muted);
 }
 
 .skill p:last-child{
     border-bottom:none;
 }
-
-.skill-tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.skill-tags span{
-    background:rgba(104,99,242,.15);
-    border:1px solid rgba(104,99,242,.4);
-
-    padding:8px 14px;
-    border-radius:50px;
-
-    font-size:.9rem;
-
-    transition:.3s;
-}
-
-.skill-tags span:hover{
-    transform:translateY(-3px);
-
-    background:#6863F2;
-}
-
 
 /* =======================
 PROJECTS
@@ -430,19 +383,39 @@ PROJECTS
 
 .project-grid{
     display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(320px,1fr));
-
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
     gap:30px;
+}
+
+.project-card-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card-item h3 {
+    margin-top: 5px;
+    font-size: 1.3rem;
+}
+
+.project-card-item p {
+    color: var(--text-muted);
+    margin-top: 5px;
+    font-size: 0.95rem;
+    flex-grow: 1;
 }
 
 .project-image{
     width:100%;
     height:220px;
     object-fit:cover;
-
+    filter: grayscale(20%); /* Sentuhan monokrom lembut pada mockup gambar */
     border-radius:18px;
     margin-bottom:20px;
+    transition: 0.4s;
+}
+
+.card:hover .project-image {
+    filter: grayscale(0%);
 }
 
 .project-buttons{
@@ -455,24 +428,23 @@ PROJECTS
     flex:1;
     text-align:center;
     text-decoration:none;
-
     padding:12px;
-
     border-radius:12px;
-
     font-size:.9rem;
     font-weight:600;
-
     transition:.3s;
 }
 
 .github-btn{
-    background:#111827;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color:white;
 }
 
 .github-btn:hover{
     transform:translateY(-3px);
+    background: #ffffff;
+    color: #0a0a0c;
 }
 
 /* =======================
@@ -480,74 +452,65 @@ CONTACT
 ======================= */
 #contact .section-title{
     color:#fff;
-
-    text-shadow:
-    0 0 10px #6863F2,
-    0 0 20px #6863F2,
-    0 0 40px #6863F2;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
+
 .contact-form{
     max-width:700px;
     margin:auto;
 }
+
 .contact-form input::placeholder,
 .contact-form textarea::placeholder{
-    color: rgba(255,255,255,0.75);
+    color: rgba(255,255,255,0.4);
 }
+
 .contact-form input,
 .contact-form textarea{
     color:white;
     width:100%;
     padding:18px;
     margin-bottom:15px;
-
-    border:none;
-
     border-radius:15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    transition: 0.3s;
+}
 
-    background: rgba(255,255,255,.12);
-border: 1px solid rgba(255,255,255,.15);
-    color:white;
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    outline: none;
 }
 
 .contact-form button{
     width:100%;
     border:none;
-
     padding:18px;
-
     border-radius:15px;
-
     cursor:pointer;
+    color: #0a0a0c;
+    font-weight: 600;
+    font-size: 1rem;
+    background: #ffffff;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
 
-    color:white;
-
-    background:
-    linear-gradient(
-        135deg,
-        #4630D9,
-        #6863F2
-    );
+.contact-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
 }
 
 /* =======================
-FOOTER
-======================= */
-
-footer{
-    text-align:center;
-    padding:30px;
-    background:rgba(0,0,0,.2);
-}
-
-/* =======================
-ANIMATION
+ANIMATION & TYPING
 ======================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(80px);
-    transition:all 1s ease;
+    transform:translateY(50px);
+    transition:all 0.8s ease;
 }
 
 .reveal.active{
@@ -560,7 +523,8 @@ ANIMATION
     margin-bottom:20px;
     font-size:1.8rem;
     font-weight:600;
-    color:var(--light-blue);
+    color:#ffffff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 
 #typing::after{
@@ -569,616 +533,304 @@ ANIMATION
 }
 
 @keyframes blink{
-    50%{
-        opacity:0;
-    }
+    50%{ opacity:0; }
 }
 
-.typing-text{
-    color:#6863F2;
-
-    text-shadow:
-    0 0 10px #6863F2,
-    0 0 20px #6863F2,
-    0 0 40px #4630D9;
-}
-
+/* =======================
+FOOTER
+======================= */
 footer{
     text-align:center;
-    padding:40px 20px;
+    padding:50px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--glass-border);
+}
 
-    background:rgba(0,0,0,.2);
+footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
 .social-icons{
     display:flex;
     justify-content:center;
     gap:25px;
-
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 .social-icons a{
-    width:55px;
-    height:55px;
-
+    width:50px;
+    height:50px;
     display:flex;
     align-items:center;
     justify-content:center;
-
     border-radius:50%;
-
     text-decoration:none;
-
-    background:rgba(255,255,255,.05);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    color:#6863F2;
-
-    font-size:1.5rem;
-
+    background: rgba(255, 255, 255, 0.03);
+    border:1px solid var(--glass-border);
+    color: var(--text-muted);
+    font-size:1.3rem;
     transition:.3s;
 }
 
 .social-icons a:hover{
-    transform:translateY(-8px);
-
-    background:#6863F2;
-    color:white;
-
-    box-shadow:
-    0 0 15px #6863F2,
-    0 0 30px #6863F2;
+    transform:translateY(-6px);
+    background:#ffffff;
+    color:#0a0a0c;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
 
 /* =======================
-MOBILE
+MOBILE RESPONSIVE
 ======================= */
 
+@media(max-width:992px){
+    header {
+        padding: 15px 3%;
+    }
+    .navbar {
+        gap: 40px;
+    }
+}
+
 @media(max-width:768px){
-
-header{
-    padding:12px;
-}
-
-.navbar{
-    padding:15px;
-}
-
-.logo{
-    font-size:1.5rem;
-}
-
-
-section{
-    padding:80px 20px;
-}
-
-.profile-img{
-    width:170px;
-    height:170px;
-}
-
-.skill-icons{
-    grid-template-columns:repeat(2,1fr);
-}
-
-.skills-grid{
-    grid-template-columns:1fr;
-}
-
-.project-grid{
-    grid-template-columns:1fr;
-}
-
-.skill-item span{
-    display:block;
-    font-size:.8rem;
-    margin-top:8px;
-    overflow-wrap:break-word;
-    word-break:break-word;
-}
-
-.card{
-    padding:20px;
-}
-
-img,
-video,
-iframe{
-    max-width:100%;
-}
-
-.skills-grid,
-.skill-icons,
-.card,
-.skill{
-    min-width:0;
-}
-
+    section{ padding:80px 20px; }
+    .hero { padding-top: 130px; }
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 30px;
+    }
+    .hero-content h1 { font-size: 2.5rem; }
+    .profile-img{ width:220px; height:220px; }
+    .skill-icons{ grid-template-columns:repeat(2,1fr); }
+    .skills-grid{ grid-template-columns:1fr; }
+    .project-grid{ grid-template-columns:1fr; }
+    .card{ padding:25px; }
+    .section-title { font-size: 2.3rem; }
 }
 
 </style>
 </head>
 <body>
 
-</div>
-
 <header>
+    <div class="navbar">
+        <div class="logo-wrapper">
+            <div class="logo-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="logo">Webfolio</div>
+        </div>
 
-<div class="navbar">
+        <ul class="nav-menu-horizontal">
+            <li><a href="#home" class="active-nav"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+            <li><a href="#about"><i class="fa-solid fa-user"></i><span>About</span></a></li>
+            <li><a href="#skills"><i class="fa-solid fa-code"></i><span>Skills</span></a></li>
+            <li><a href="#projects"><i class="fa-solid fa-folder-open"></i><span>Projects</span></a></li>
+            <li><a href="#contact"><i class="fa-solid fa-envelope"></i><span>Contact</span></a></li>
+        </ul>
 
-<div class="logo">
-Webfolio
-</div>
-
-<div class="menu-btn">
-    <i class="fa-solid fa-bars"></i>
-</div>
-
-</div>
-
+        <div class="menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
 </header>
 
-<div class="overlay"></div>
-
-<div class="nav-menu">
-
-    <div class="close-btn">
-    <i class="fa-solid fa-xmark"></i>
-</div>
-    <ul>
-
-    <li>
-        <a href="#home">
-            <i class="fa-solid fa-house"></i>
-            Home
-        </a>
-    </li>
-
-    <li>
-        <a href="#about">
-            <i class="fa-solid fa-user"></i>
-            About
-        </a>
-    </li>
-
-    <li>
-        <a href="#skills">
-            <i class="fa-solid fa-code"></i>
-            Skills
-        </a>
-    </li>
-
-    <li>
-        <a href="#projects">
-            <i class="fa-solid fa-folder-open"></i>
-            Projects
-        </a>
-    </li>
-
-    <li>
-        <a href="#contact">
-            <i class="fa-solid fa-envelope"></i>
-            Contact
-        </a>
-    </li>
-
-</ul>
-
-</div>
-
 <section class="hero" id="home">
+    <div class="hero-container">
+        
+        <div class="hero-content">
+            <h1>Halo, I am <span>Anggy</span></h1>
+            <h2 class="typing-text"><span id="typing"></span></h2>
+            <p>Welcome to my webfolio. I am a software engineering student passionate about building secure and optimized digital solutions.</p>
+            <a href="CV-Anggy.pdf" download class="btn">
+                <i class="fa-solid fa-download"></i> Download CV
+            </a>
+        </div>
 
-<div class="hero-content">
-<div class="profile-wrapper">
-    <img src= "https://i.pinimg.com/736x/9b/1f/81/9b1f813f03ffd6a2a152f3a7243f9fd5.jpg"
-     alt="Profile Image"
-     class="profile-img">
-</div>
-<h1>
-Halo, I am <span>Anggy</span>
-</h1>
+        <div class="profile-wrapper">
+            <img src="https://i.pinimg.com/originals/09/fa/e4/09fae4879b5c83ac5620f3e0b75156fb.gif" alt="Profile Image" class="profile-img">
+        </div>
 
-<h2 class="typing-text">
-    <span id="typing"></span>
-</h2>
-
-<a href="CV-Anggy.pdf" download class="btn">
-    <i class="fa-solid fa-download"></i>
-    Download CV
-</a>
-
-</div>
-
+    </div>
 </section>
 
 <section id="about" class="reveal">
-
-<h2 class="section-title">
-About Me
-</h2>
-
-<div class="card about-content">
-
-<p>
-A software engineering student at Politeknik Indonusa Surakarta. 
-I want to grow and learn a lot about Full-stack Development and Cybersecurity.
-</p>
-
-</div>
-
+    <h2 class="section-title">About Me</h2>
+    <div class="card about-content">
+        <p>
+        A software engineering student at Politeknik Indonusa Surakarta. 
+        I want to grow and learn a lot about Full-stack Development and Cybersecurity.
+        </p>
+    </div>
 </section>
 
 <section id="skills" class="reveal">
-
     <h2 class="section-title">Skills</h2>
-
     <div class="skills-grid">
-
-        <!-- HARD SKILLS -->
         <div class="card skill">
-
-    <h3>
-        <i class="fa-solid fa-laptop-code"></i>
-        Hard Skills
-    </h3>
-
-    <div class="skill-icons">
-
-        <div class="skill-item">
-            <i class="fa-brands fa-html5"></i>
-            <span>HTML5</span>
-        </div>
-
-        <div class="skill-item">
-            <i class="fa-brands fa-css3-alt"></i>
-            <span>CSS3</span>
-        </div>
-
-        <div class="skill-item">
-            <i class="fa-brands fa-js"></i>
-            <span>JavaScript</span>
-        </div>
-
-        <div class="skill-item">
-            <i class="fa-brands fa-python"></i>
-            <span>Python</span>
-        </div>
-
-        <div class="skill-item">
-            <i class="fa-brands fa-php"></i>
-            <span>PHP</span>
-        </div>
-
-        <div class="skill-item">
-            <i class="fa-solid fa-code"></i>
-            <span>Dart</span>
-        </div>
-
-        <div class="skill-item">
-            <i class="fa-brands fa-laravel"></i>
-            <span>Laravel</span>
-        </div>
-
-        <div class="skill-item">
-            <i class="fa-solid fa-database"></i>
-            <span>MySQL</span>
-        </div>
-
-    </div>
-
-</div>
-        <!-- SOFT SKILLS -->
-        <div class="card skill">
-
-            <h3>
-                <i class="fa-solid fa-people-group"></i>
-                Soft Skills
-            </h3>
-
+            <h3><i class="fa-solid fa-laptop-code"></i> Hard Skills</h3>
             <div class="skill-icons">
-
-                <div class="skill-item">
-                    <i class="fa-solid fa-comments"></i>
-                    <span>Communication</span>
-                </div>
-
-                <div class="skill-item">
-                    <i class="fa-solid fa-users"></i>
-                    <span>Teamwork</span>
-                </div>
-
-                <div class="skill-item">
-                    <i class="fa-solid fa-lightbulb"></i>
-                    <span>Problem Solving</span>
-                </div>
-
-                <div class="skill-item">
-                    <i class="fa-solid fa-brain"></i>
-                    <span>Critical Thinking</span>
-                </div>
-
-                <div class="skill-item">
-                    <i class="fa-solid fa-clock"></i>
-                    <span>Time Management</span>
-                </div>
-
-                <div class="skill-item">
-                    <i class="fa-solid fa-handshake"></i>
-                    <span>Adaptability</span>
-                </div>
-
+                <div class="skill-item"><i class="fa-brands fa-html5"></i><span>HTML5</span></div>
+                <div class="skill-item"><i class="fa-brands fa-css3-alt"></i><span>CSS3</span></div>
+                <div class="skill-item"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
+                <div class="skill-item"><i class="fa-brands fa-python"></i><span>Python</span></div>
+                <div class="skill-item"><i class="fa-brands fa-php"></i><span>PHP</span></div>
+                <div class="skill-item"><i class="fa-solid fa-code"></i><span>Dart</span></div>
+                <div class="skill-item"><i class="fa-brands fa-laravel"></i><span>Laravel</span></div>
+                <div class="skill-item"><i class="fa-solid fa-database"></i><span>MySQL</span></div>
             </div>
-
         </div>
-
+        <div class="card skill">
+            <h3><i class="fa-solid fa-people-group"></i> Soft Skills</h3>
+            <div class="skill-icons">
+                <div class="skill-item"><i class="fa-solid fa-comments"></i><span>Communication</span></div>
+                <div class="skill-item"><i class="fa-solid fa-users"></i><span>Teamwork</span></div>
+                <div class="skill-item"><i class="fa-solid fa-lightbulb"></i><span>Problem Solving</span></div>
+                <div class="skill-item"><i class="fa-solid fa-brain"></i><span>Critical Thinking</span></div>
+                <div class="skill-item"><i class="fa-solid fa-clock"></i><span>Time Management</span></div>
+                <div class="skill-item"><i class="fa-solid fa-handshake"></i><span>Adaptability</span></div>
+            </div>
+        </div>
     </div>
-
 </section>
+
 <section id="projects" class="reveal">
-
-<h2 class="section-title">
-Projects
-</h2>
-
-<div class="project-grid">
-
-<div class="card">
-
-    <img src="https://i.pinimg.com/webp87/1200x/32/0b/a2/320ba24bd0157bd1266dcc89dec7b2ad.webp"
-     alt="Project"
-     class="project-image">
-
-    <h3>SignVision</h3>
-
-    <p>
-        Web-based sign language interpreter
-    </p>
-
-    <div class="project-buttons">
-
-        <a href="https://github.com/anggysl/SignVision.git"
-           target="_blank"
-           class="project-btn github-btn">
-            <i class="fa-brands fa-github"></i>
-            Repository
-        </a>
-
+    <h2 class="section-title">Projects</h2>
+    <div class="project-grid">
+        <div class="card project-card-item">
+            <img src="https://i.pinimg.com/webp87/1200x/32/0b/a2/320ba24bd0157bd1266dcc89dec7b2ad.webp" alt="Project" class="project-image">
+            <h3>SignVision</h3>
+            <p>Web-based sign language interpreter</p>
+            <div class="project-buttons">
+                <a href="https://github.com/anggysl/SignVision.git" target="_blank" class="project-btn github-btn">
+                    <i class="fa-brands fa-github"></i> Repository
+                </a>
+            </div>
+        </div>
+        <div class="card project-card-item">
+            <img src="https://i.pinimg.com/1200x/f9/90/59/f99059c9960fb3a114dadf078146127c.jpg" alt="Project" class="project-image">
+            <h3>Flutter sales system</h3>
+            <p>A simple sales system built with Flutter</p>
+            <div class="project-buttons">
+                <a href="https://github.com/anggysl/Sistem-Penjualan.git" target="_blank" class="project-btn github-btn">
+                    <i class="fa-brands fa-github"></i> Repository
+                </a>
+            </div>
+        </div>
+        <div class="card project-card-item">
+            <img src="https://i.pinimg.com/736x/df/fa/72/dffa725d8e60de387c395143fb15e9d9.jpg" alt="Project" class="project-image">
+            <h3>Personal Website 2</h3>
+            <p>Personal website built with Laravel, PHP, and MySQL</p>
+            <div class="project-buttons">
+                <a href="https://github.com/anggysl/Personal-Website.git" target="_blank" class="project-btn github-btn">
+                    <i class="fa-brands fa-github"></i> Repository
+                </a>
+            </div>
+        </div>
     </div>
-
-</div>
-
-<div class="card">
-
-    <img src="https://i.pinimg.com/1200x/f9/90/59/f99059c9960fb3a114dadf078146127c.jpg"
-     alt="Project"
-     class="project-image">
-
-    <h3>Flutter sales system</h3>
-
-    <p>
-        A simple sales system built with Flutter
-    </p>
-
-    <div class="project-buttons">
-
-        <a href="https://github.com/anggysl/Sistem-Penjualan.git"
-           target="_blank"
-           class="project-btn github-btn">
-            <i class="fa-brands fa-github"></i>
-            Repository
-        </a>
-
-    </div>
-
-</div>
-
-
-<div class="card">
-
-    <img src="https://i.pinimg.com/736x/df/fa/72/dffa725d8e60de387c395143fb15e9d9.jpg"
-     alt="Project"
-     class="project-image">
-
-    <h3>Personal Website 2</h3>
-
-    <p>
-        Personal website built with Laravel, PHP, and MySQL
-    </p>
-
-    <div class="project-buttons">
-
-        <a href="https://github.com/anggysl/Personal-Website.git"
-           target="_blank"
-           class="project-btn github-btn">
-            <i class="fa-brands fa-github"></i>
-            Repository
-        </a>
-
-    </div>
-
-</div>
 </section>
 
 <section id="contact" class="reveal">
-
-<h2 class="section-title">
-Contact Me
-</h2>
-
-<form class="contact-form">
-
-<input type="text" placeholder="Name">
-
-<input type="email" placeholder="Email">
-
-<textarea rows="6" placeholder="Message"></textarea>
-
-<button type="submit">
-    <i class="fa-solid fa-paper-plane"></i>
-    Send Message
-</button>
-
-</form>
-
+    <h2 class="section-title">Contact Me</h2>
+    <form class="contact-form">
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <textarea rows="6" placeholder="Message"></textarea>
+        <button type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+    </form>
 </section>
 
 <footer>
-
     <div class="social-icons">
-
-        <a href="https://wa.me/628812617329" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-
-        <a href="https://instagram.com/anggyy_0" target="_blank">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-
-        <a href="https://github.com/anggysl" target="_blank">
-            <i class="fa-brands fa-github"></i>
-        </a>
-
-        <a href="https://linkedin.com/in/anggysls31" target="_blank">
-            <i class="fa-brands fa-linkedin"></i>
-        </a>
-
+        <a href="https://wa.me/628812617329" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://instagram.com/anggyy_0" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://github.com/anggysl" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/in/anggysls31" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
     </div>
-
-    <p>
-        © 2025 Anggy • All Rights Reserved
-    </p>
-
+    <p>© 2026 Anggy • All Rights Reserved</p>
 </footer>
 
 <script>
+/* ACTIVE LINK HIGHLIGHTER WHEN SCROLLING */
+const navLinks = document.querySelectorAll('.nav-menu-horizontal a');
+const sections = document.querySelectorAll('section');
 
-/* NAVBAR */
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute('id');
+        }
+    });
 
-const menuBtn = document.querySelector(".menu-btn");
-const navMenu = document.querySelector(".nav-menu");
-const closeBtn = document.querySelector(".close-btn");
-const overlay = document.querySelector(".overlay");
-
-function openMenu(){
-    navMenu.classList.add("active");
-    overlay.classList.add("active");
-}
-
-function closeMenu(){
-    navMenu.classList.remove("active");
-    overlay.classList.remove("active");
-}
-
-menuBtn.addEventListener("click", openMenu);
-
-closeBtn.addEventListener("click", closeMenu);
-
-overlay.addEventListener("click", closeMenu);
-
-document.querySelectorAll(".nav-menu a")
-.forEach(link=>{
-    link.addEventListener("click", closeMenu);
-});
-
-/* CLOSE MENU WHEN LINK CLICKED */
-
-document.querySelectorAll(".nav-menu a")
-.forEach(link => {
-
-link.addEventListener("click",()=>{
-
-navMenu.classList.remove("active");
-
-});
-
+    navLinks.forEach(link => {
+        link.classList.remove('active-nav');
+        if (link.getAttribute('href').includes(current)) {
+            link.classList.add('active-nav');
+        }
+    });
 });
 
 /* TYPING ANIMATION */
-const texts = [
-    "Frontend Developer",
-    "Fullstack Developer",
-    "Cybersecurity",
-    "AI Engineer",
-];
-
-let count = 0;
-let index = 0;
-let currentText = "";
-let letter = "";
+const texts = ["Frontend Developer", "Fullstack Developer", "Cybersecurity", "AI Engineer"];
+let count = 0; let index = 0; let currentText = ""; let letter = "";
 
 (function type(){
-
-    if(count === texts.length){
-        count = 0;
-    }
-
+    if(count === texts.length){ count = 0; }
     currentText = texts[count];
     letter = currentText.slice(0, ++index);
-
     document.getElementById("typing").textContent = letter;
 
     if(letter.length === currentText.length){
-
         setTimeout(() => {
-
             let erase = setInterval(() => {
-
                 letter = letter.slice(0, -1);
-
                 document.getElementById("typing").textContent = letter;
-
                 if(letter.length === 0){
                     clearInterval(erase);
                     count++;
                     index = 0;
                     setTimeout(type, 300);
                 }
-
             }, 50);
-
         }, 1500);
-
     } else {
         setTimeout(type, 100);
     }
-
 })();
 
 /* SCROLL REVEAL */
-
 const reveals = document.querySelectorAll(".reveal");
-
 function reveal(){
-
     reveals.forEach(item => {
-
         const windowHeight = window.innerHeight;
         const revealTop = item.getBoundingClientRect().top;
         const revealPoint = 150;
-
         if(revealTop < windowHeight - revealPoint){
             item.classList.add("active");
         }else{
             item.classList.remove("active");
         }
-
     });
-
 }
-
 window.addEventListener("scroll", reveal);
 reveal();
-
-history.scrollRestoration = "manual";
-
-window.onload = () => {
-    window.scrollTo(0, 0);
-};
-
 </script>
 
 </body>
